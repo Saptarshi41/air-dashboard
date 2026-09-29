@@ -12,25 +12,34 @@ export default function InversionGauge({
   const vent = coupled ? hourly.ventilation_coupled : hourly.ventilation_uncoupled;
 
   return (
-    <div
-      style={{
-        border: "1px solid #333",
-        padding: "1rem",
-        borderRadius: 8,
-        marginTop: "1rem",
-        maxWidth: 320,
-      }}
-    >
-      <h3 style={{ marginTop: 0 }}>Atmospheric Status</h3>
-      <p>PBL Height: <b>{pbl.toFixed(0)} m</b></p>
-      <p>Solar Dimming: <b>{hourly.dimming_pct.toFixed(1)}%</b></p>
-      <p>Ventilation Index: <b>{vent.toFixed(0)} m²/s</b></p>
-      <p>
-        Stagnation:{" "}
-        <b style={{ color: hourly.stagnation_coupled ? "#ff4d4d" : "#4dff88" }}>
-          {hourly.stagnation_coupled ? "CRITICAL" : "Normal"}
-        </b>
-      </p>
+    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+      <h3 className="text-sm font-medium text-neutral-400 mb-3">Atmospheric Status</h3>
+      <div className="space-y-1.5 text-sm">
+        <p className="flex justify-between">
+          <span className="text-neutral-400">PBL Height</span>
+          <span className="font-semibold text-white">{pbl.toFixed(0)} m</span>
+        </p>
+        <p className="flex justify-between">
+          <span className="text-neutral-400">Solar Dimming</span>
+          <span className="font-semibold text-white">{hourly.dimming_pct.toFixed(1)}%</span>
+        </p>
+        <p className="flex justify-between">
+          <span className="text-neutral-400">Ventilation Index</span>
+          <span className="font-semibold text-white">{vent.toFixed(0)} m²/s</span>
+        </p>
+        <p className="flex justify-between items-center">
+          <span className="text-neutral-400">Stagnation</span>
+          <span
+            className={`text-xs font-bold px-2 py-0.5 rounded ${
+              hourly.stagnation_coupled
+                ? "bg-red-950 text-red-400"
+                : "bg-green-950 text-green-400"
+            }`}
+          >
+            {hourly.stagnation_coupled ? "CRITICAL" : "NORMAL"}
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

@@ -6,16 +6,7 @@ export default function CurrentConditions({ station }: { station: Station }) {
 
   if (!cc) {
     return (
-      <div
-        style={{
-          border: "1px solid #333",
-          padding: "1rem",
-          borderRadius: 8,
-          marginTop: "1rem",
-          maxWidth: 320,
-          color: "#888",
-        }}
-      >
+      <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4 text-neutral-500 text-sm">
         No current-conditions snapshot available for this station.
       </div>
     );
@@ -24,31 +15,26 @@ export default function CurrentConditions({ station }: { station: Station }) {
   const isCritical = cc.dispersion.toLowerCase().includes("critical");
 
   return (
-    <div
-      style={{
-        border: "1px solid #333",
-        padding: "1rem",
-        borderRadius: 8,
-        marginTop: "1rem",
-        maxWidth: 320,
-        background: "#111",
-      }}
-    >
-      <h3 style={{ marginTop: 0, marginBottom: "0.5rem" }}>
+    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+      <h3 className="text-sm font-medium text-neutral-400 mb-3">
         Current Conditions (Live Snapshot)
       </h3>
-      <p>
-        Inversion ΔT: <b>{cc.inversion_delta_c}°C</b>
-      </p>
-      <p>
-        Ventilation Index: <b>{cc.ventilation_index} m²/s</b>
-      </p>
-      <p>
-        Dispersion Status:{" "}
-        <b style={{ color: isCritical ? "#ff4d4d" : "#4dff88" }}>
-          {cc.dispersion}
-        </b>
-      </p>
+      <div className="space-y-1.5 text-sm">
+        <p className="flex justify-between">
+          <span className="text-neutral-400">Inversion ΔT</span>
+          <span className="font-semibold text-white">{cc.inversion_delta_c}°C</span>
+        </p>
+        <p className="flex justify-between">
+          <span className="text-neutral-400">Ventilation Index</span>
+          <span className="font-semibold text-white">{cc.ventilation_index} m²/s</span>
+        </p>
+        <p className="flex justify-between">
+          <span className="text-neutral-400">Dispersion Status</span>
+          <span className={`font-semibold ${isCritical ? "text-red-400" : "text-green-400"}`}>
+            {cc.dispersion}
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
