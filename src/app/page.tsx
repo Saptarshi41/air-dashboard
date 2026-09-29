@@ -79,9 +79,7 @@ export default function Home() {
             <TimeSlider hour={hour} onChange={setHour} />
           </div>
 
-          <div className="rounded-xl border border-neutral-800 p-4 bg-neutral-900">
-            
-          </div>
+          <ComparisonChart hourly={station?.hourly ?? []} />
         </div>
 
         {/* Right column: station details */}
