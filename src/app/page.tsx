@@ -80,7 +80,7 @@ export default function Home() {
           </div>
 
           <div className="rounded-xl border border-neutral-800 p-4 bg-neutral-900">
-            <ComparisonChart hourly={station?.hourly ?? []} />
+            
           </div>
         </div>
 

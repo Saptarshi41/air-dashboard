@@ -19,8 +19,8 @@ export default function ComparisonChart({ hourly }: { hourly: HourlyRecord[] }) 
   }));
 
   return (
-    <div style={{ marginTop: "1.5rem", maxWidth: 700 }}>
-      <h3>72-Hour AQI: Coupled vs Uncoupled</h3>
+    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+  <h3 className="text-sm font-medium text-neutral-400 mb-3">72-Hour AQI: Coupled vs Uncoupled</h3>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />

@@ -107,5 +107,5 @@ export default function MapViewer({
     });
   }, [data, selectedHour, coupled]);
 
-  return <div ref={mapContainer} style={{ width: "100%", height: "500px" }} />;
+  return <div ref={mapContainer} style={{ width: "100%", height: "650px" }} />;
 }
